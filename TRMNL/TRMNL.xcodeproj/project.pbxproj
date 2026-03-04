@@ -29,6 +29,7 @@
 		A92E83042F5750FD00C78F59 /* SendPhotoIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E83002F5750FD00C78F59 /* SendPhotoIntent.swift */; };
 		A92E83062F5764AA00C78F59 /* SendPhotoIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E83052F5764AA00C78F59 /* SendPhotoIntent.swift */; };
 		A92E830A2F5764FB00C78F59 /* CalendarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E83092F5764FB00C78F59 /* CalendarPickerView.swift */; };
+		A965EDF22F58CC0500417079 /* SlideshowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965EDF12F58CC0500417079 /* SlideshowType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		A92E83012F5750FD00C78F59 /* TRMNLShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRMNLShortcuts.swift; sourceTree = "<group>"; };
 		A92E83052F5764AA00C78F59 /* SendPhotoIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPhotoIntent.swift; sourceTree = "<group>"; };
 		A92E83092F5764FB00C78F59 /* CalendarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPickerView.swift; sourceTree = "<group>"; };
+		A965EDF12F58CC0500417079 /* SlideshowType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideshowType.swift; sourceTree = "<group>"; };
 		B10001 /* TRMNLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRMNLApp.swift; sourceTree = "<group>"; };
 		B10002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B10003 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		G10004 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A965EDF12F58CC0500417079 /* SlideshowType.swift */,
 				B10003 /* AppSettings.swift */,
 				B10004 /* CalendarViewMode.swift */,
 			);
@@ -261,6 +264,7 @@
 				A10014 /* MonthOverviewView.swift in Sources */,
 				A92E83022F5750FD00C78F59 /* SendCalendarIntents.swift in Sources */,
 				A92E83032F5750FD00C78F59 /* TRMNLShortcuts.swift in Sources */,
+				A965EDF22F58CC0500417079 /* SlideshowType.swift in Sources */,
 				A92E83042F5750FD00C78F59 /* SendPhotoIntent.swift in Sources */,
 				A10015 /* SettingsTabView.swift in Sources */,
 			);
