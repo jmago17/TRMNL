@@ -1,0 +1,50 @@
+<!-- TRMNL Private Plugin: Month Overview -->
+<!-- Strategy: Webhook | Layout: Full -->
+<!-- Webhook merge_variables: {
+  "month_title": "February 2025",
+  "headers": ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+  "weeks": [
+    [
+      {"day":"","has_events":false},
+      {"day":"","has_events":false},
+      {"day":"","has_events":false},
+      {"day":"","has_events":false},
+      {"day":"","has_events":false},
+      {"day":"1","has_events":false},
+      {"day":"2","has_events":true}
+    ],
+    ...
+  ]
+} -->
+
+<div style="width:800px;height:480px;font-family:sans-serif;padding:12px;box-sizing:border-box;background:#fff;">
+  <div style="font-size:26px;font-weight:bold;text-align:center;margin-bottom:8px;">
+    {{ month_title }}
+  </div>
+
+  <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+    <thead>
+      <tr>
+        {% for h in headers %}
+          <th style="font-size:14px;padding:4px;text-align:center;border-bottom:2px solid #000;">{{ h }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for week in weeks %}
+        <tr>
+          {% for cell in week %}
+            <td style="height:62px;text-align:center;vertical-align:top;padding:4px;border:1px solid #ddd;">
+              {% if cell.day != blank %}
+                <div style="font-size:18px;font-weight:bold;">{{ cell.day }}</div>
+                {% if cell.has_events %}
+                  <div style="margin-top:4px;font-size:20px;">&#9679;</div>
+                {% endif %}
+              {% endif %}
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

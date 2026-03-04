@@ -1,0 +1,34 @@
+<!-- TRMNL Private Plugin: Week Overview -->
+<!-- Strategy: Webhook | Layout: Full -->
+<!-- Webhook merge_variables: {
+  "week_title": "Feb 17 – 23, 2025",
+  "days": [
+    {"label":"Mon 17","events":[{"time":"09:00","name":"Standup"}]},
+    {"label":"Tue 18","events":[]},
+    ...
+  ]
+} -->
+
+<div style="width:800px;height:480px;font-family:sans-serif;padding:8px;box-sizing:border-box;background:#fff;">
+  <div style="font-size:20px;font-weight:bold;text-align:center;margin-bottom:6px;">
+    {{ week_title }}
+  </div>
+
+  <div style="display:flex;gap:4px;height:440px;">
+    {% for day in days %}
+      <div style="flex:1;min-width:0;border:1px solid #000;padding:4px;overflow:hidden;box-sizing:border-box;">
+        <div style="font-size:13px;font-weight:bold;text-align:center;border-bottom:1px solid #000;padding-bottom:2px;margin-bottom:4px;">
+          {{ day.label }}
+        </div>
+        {% for event in day.events %}
+          <div style="font-size:11px;margin-bottom:3px;line-height:1.2;">
+            <strong>{{ event.time }}</strong> {{ event.name }}
+          </div>
+        {% endfor %}
+        {% if day.events.size == 0 %}
+          <div style="font-size:11px;color:#999;text-align:center;margin-top:20px;">—</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

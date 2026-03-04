@@ -1,0 +1,11 @@
+name = "trmnl-image-worker"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "trmnl-images"
+
+[[kv_namespaces]]
+binding = "SLIDESHOW_STATE"
+id = "4401891b7b494693bb203a57dc74c9e5"

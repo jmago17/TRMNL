@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10001 /* TRMNLApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10001 /* TRMNLApp.swift */; };
+		A10002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10002 /* ContentView.swift */; };
+		A10003 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10003 /* AppSettings.swift */; };
+		A10004 /* CalendarViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10004 /* CalendarViewMode.swift */; };
+		A10005 /* ImageProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10005 /* ImageProcessingService.swift */; };
+		A10006 /* CloudflareUploadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10006 /* CloudflareUploadService.swift */; };
+		A10007 /* TRMNLWebhookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10007 /* TRMNLWebhookService.swift */; };
+		A10008 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10008 /* CalendarService.swift */; };
+		A10009 /* PhotosTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10009 /* PhotosTabView.swift */; };
+		A10010 /* PhotoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10010 /* PhotoPreviewView.swift */; };
+		A10011 /* CalendarTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10011 /* CalendarTabView.swift */; };
+		A10012 /* DayAgendaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10012 /* DayAgendaView.swift */; };
+		A10013 /* WeekOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10013 /* WeekOverviewView.swift */; };
+		A10014 /* MonthOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10014 /* MonthOverviewView.swift */; };
+		A10015 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10015 /* SettingsTabView.swift */; };
+		A10016 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10016 /* Assets.xcassets */; };
+		A10017 /* DitheringEngine in Frameworks */ = {isa = PBXBuildFile; productRef = D10001 /* DitheringEngine */; };
+		A92E83022F5750FD00C78F59 /* SendCalendarIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E82FF2F5750FD00C78F59 /* SendCalendarIntents.swift */; };
+		A92E83032F5750FD00C78F59 /* TRMNLShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E83012F5750FD00C78F59 /* TRMNLShortcuts.swift */; };
+		A92E83042F5750FD00C78F59 /* SendPhotoIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E83002F5750FD00C78F59 /* SendPhotoIntent.swift */; };
+		A92E83062F5764AA00C78F59 /* SendPhotoIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E83052F5764AA00C78F59 /* SendPhotoIntent.swift */; };
+		A92E830A2F5764FB00C78F59 /* CalendarPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E83092F5764FB00C78F59 /* CalendarPickerView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A92E82FF2F5750FD00C78F59 /* SendCalendarIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCalendarIntents.swift; sourceTree = "<group>"; };
+		A92E83002F5750FD00C78F59 /* SendPhotoIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPhotoIntent.swift; sourceTree = "<group>"; };
+		A92E83012F5750FD00C78F59 /* TRMNLShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRMNLShortcuts.swift; sourceTree = "<group>"; };
+		A92E83052F5764AA00C78F59 /* SendPhotoIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPhotoIntent.swift; sourceTree = "<group>"; };
+		A92E83092F5764FB00C78F59 /* CalendarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPickerView.swift; sourceTree = "<group>"; };
+		B10001 /* TRMNLApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRMNLApp.swift; sourceTree = "<group>"; };
+		B10002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B10003 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		B10004 /* CalendarViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewMode.swift; sourceTree = "<group>"; };
+		B10005 /* ImageProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingService.swift; sourceTree = "<group>"; };
+		B10006 /* CloudflareUploadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudflareUploadService.swift; sourceTree = "<group>"; };
+		B10007 /* TRMNLWebhookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRMNLWebhookService.swift; sourceTree = "<group>"; };
+		B10008 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		B10009 /* PhotosTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTabView.swift; sourceTree = "<group>"; };
+		B10010 /* PhotoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewView.swift; sourceTree = "<group>"; };
+		B10011 /* CalendarTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTabView.swift; sourceTree = "<group>"; };
+		B10012 /* DayAgendaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayAgendaView.swift; sourceTree = "<group>"; };
+		B10013 /* WeekOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekOverviewView.swift; sourceTree = "<group>"; };
+		B10014 /* MonthOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthOverviewView.swift; sourceTree = "<group>"; };
+		B10015 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		B10016 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C10001 /* TRMNL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRMNL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E10001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10017 /* DitheringEngine in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		G10001 = {
+			isa = PBXGroup;
+			children = (
+				G10002 /* TRMNL */,
+				G10010 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		G10002 /* TRMNL */ = {
+			isa = PBXGroup;
+			children = (
+				G10003 /* App */,
+				G10004 /* Models */,
+				G10005 /* Services */,
+				G10006 /* Views */,
+				B10016 /* Assets.xcassets */,
+			);
+			path = TRMNL;
+			sourceTree = "<group>";
+		};
+		G10003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A92E83052F5764AA00C78F59 /* SendPhotoIntent.swift */,
+				A92E82FF2F5750FD00C78F59 /* SendCalendarIntents.swift */,
+				A92E83002F5750FD00C78F59 /* SendPhotoIntent.swift */,
+				A92E83012F5750FD00C78F59 /* TRMNLShortcuts.swift */,
+				B10001 /* TRMNLApp.swift */,
+				B10002 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		G10004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B10003 /* AppSettings.swift */,
+				B10004 /* CalendarViewMode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		G10005 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B10005 /* ImageProcessingService.swift */,
+				B10006 /* CloudflareUploadService.swift */,
+				B10007 /* TRMNLWebhookService.swift */,
+				B10008 /* CalendarService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		G10006 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				G10007 /* Photos */,
+				G10008 /* Calendar */,
+				G10009 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		G10007 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				B10009 /* PhotosTabView.swift */,
+				B10010 /* PhotoPreviewView.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		G10008 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				B10011 /* CalendarTabView.swift */,
+				B10012 /* DayAgendaView.swift */,
+				B10013 /* WeekOverviewView.swift */,
+				B10014 /* MonthOverviewView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		G10009 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A92E83092F5764FB00C78F59 /* CalendarPickerView.swift */,
+				B10015 /* SettingsTabView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		G10010 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C10001 /* TRMNL.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		T10001 /* TRMNL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = X10003 /* Build configuration list for PBXNativeTarget "TRMNL" */;
+			buildPhases = (
+				E10002 /* Sources */,
+				E10001 /* Frameworks */,
+				E10003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TRMNL;
+			packageProductDependencies = (
+				D10001 /* DitheringEngine */,
+			);
+			productName = TRMNL;
+			productReference = C10001 /* TRMNL.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		P10001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					T10001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = X10001 /* Build configuration list for PBXProject "TRMNL" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = G10001;
+			packageReferences = (
+				R10001 /* XCRemoteSwiftPackageReference "DitheringEngine" */,
+			);
+			productRefGroup = G10010 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				T10001 /* TRMNL */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E10003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10016 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E10002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10001 /* TRMNLApp.swift in Sources */,
+				A10002 /* ContentView.swift in Sources */,
+				A10003 /* AppSettings.swift in Sources */,
+				A10004 /* CalendarViewMode.swift in Sources */,
+				A10005 /* ImageProcessingService.swift in Sources */,
+				A10006 /* CloudflareUploadService.swift in Sources */,
+				A10007 /* TRMNLWebhookService.swift in Sources */,
+				A10008 /* CalendarService.swift in Sources */,
+				A10009 /* PhotosTabView.swift in Sources */,
+				A92E83062F5764AA00C78F59 /* SendPhotoIntent.swift in Sources */,
+				A10010 /* PhotoPreviewView.swift in Sources */,
+				A10011 /* CalendarTabView.swift in Sources */,
+				A10012 /* DayAgendaView.swift in Sources */,
+				A10013 /* WeekOverviewView.swift in Sources */,
+				A92E830A2F5764FB00C78F59 /* CalendarPickerView.swift in Sources */,
+				A10014 /* MonthOverviewView.swift in Sources */,
+				A92E83022F5750FD00C78F59 /* SendCalendarIntents.swift in Sources */,
+				A92E83032F5750FD00C78F59 /* TRMNLShortcuts.swift in Sources */,
+				A92E83042F5750FD00C78F59 /* SendPhotoIntent.swift in Sources */,
+				A10015 /* SettingsTabView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		X10D01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		X10D02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ES2766ARHJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TRMNL;
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "TRMNL needs access to your calendar to display events on your e-ink device.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.marome.TRMNL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		X10R01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		X10R02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ES2766ARHJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TRMNL;
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "TRMNL needs access to your calendar to display events on your e-ink device.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.marome.TRMNL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		X10001 /* Build configuration list for PBXProject "TRMNL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				X10D01 /* Debug */,
+				X10R01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		X10003 /* Build configuration list for PBXNativeTarget "TRMNL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				X10D02 /* Debug */,
+				X10R02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		R10001 /* XCRemoteSwiftPackageReference "DitheringEngine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Eskils/DitheringEngine.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D10001 /* DitheringEngine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = R10001 /* XCRemoteSwiftPackageReference "DitheringEngine" */;
+			productName = DitheringEngine;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = P10001 /* Project object */;
+}
