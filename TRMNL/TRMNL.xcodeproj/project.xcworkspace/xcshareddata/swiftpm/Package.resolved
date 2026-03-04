@@ -1,0 +1,15 @@
+{
+  "originHash" : "917f4049943c0d008ac54d6b501e6c560437f70a2a942391df03a0f4cb9c98cf",
+  "pins" : [
+    {
+      "identity" : "ditheringengine",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Eskils/DitheringEngine.git",
+      "state" : {
+        "revision" : "0197a146b3f62fa9003f55129ec610043e109390",
+        "version" : "1.10.0"
+      }
+    }
+  ],
+  "version" : 3
+}

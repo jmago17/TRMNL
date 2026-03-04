@@ -26,7 +26,8 @@ build/
 # Swift Package Manager
 .build/
 Packages/
-Package.resolved
+# Package.resolved must be committed for Xcode Cloud CI
+# Package.resolved
 
 # Cloudflare / Node
 node_modules/
