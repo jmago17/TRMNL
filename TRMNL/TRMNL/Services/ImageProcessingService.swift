@@ -5,8 +5,7 @@ actor ImageProcessingService {
     static let displayHeight = 480
 
     func processForDisplay(_ image: UIImage) -> UIImage {
-        let resized = resize(image)
-        return convertToGrayscale(resized)
+        resize(image)
     }
 
     func jpegData(from image: UIImage, quality: CGFloat = 0.85) -> Data? {
@@ -42,21 +41,7 @@ actor ImageProcessingService {
         }
     }
 
-    private func convertToGrayscale(_ image: UIImage) -> UIImage {
-        guard let cgImage = image.cgImage else { return image }
-        let context = CGContext(
-            data: nil,
-            width: cgImage.width,
-            height: cgImage.height,
-            bitsPerComponent: 8,
-            bytesPerRow: 0,
-            space: CGColorSpaceCreateDeviceGray(),
-            bitmapInfo: CGImageAlphaInfo.none.rawValue
-        )
-        context?.draw(cgImage, in: CGRect(x: 0, y: 0, width: cgImage.width, height: cgImage.height))
-        guard let grayscale = context?.makeImage() else { return image }
-        return UIImage(cgImage: grayscale)
-    }
+
 }
 
 enum ImageProcessingError: LocalizedError {
