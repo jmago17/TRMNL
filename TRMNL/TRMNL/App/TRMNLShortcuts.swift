@@ -21,6 +21,12 @@ struct TRMNLShortcuts: AppShortcutsProvider {
             systemImageName: "photo.stack"
         )
 AppShortcut(
+            intent: CheckPhotoOrientation(),
+            phrases: ["Check photo orientation with \(.applicationName)"],
+            shortTitle: "Check Orientation",
+            systemImageName: "rectangle.portrait.and.arrow.right"
+        )
+        AppShortcut(
             intent: SendDayAgendaToTRMNL(),
             phrases: ["Send today's agenda to \(.applicationName)", "Update \(.applicationName) calendar"],
             shortTitle: "Day Agenda",

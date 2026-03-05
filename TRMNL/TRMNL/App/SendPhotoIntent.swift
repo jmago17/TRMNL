@@ -51,6 +51,22 @@ struct UploadLandscapeSlideshow: AppIntent {
     }
 }
 
+struct CheckPhotoOrientation: AppIntent {
+    static var title: LocalizedStringResource = "Check Photo Orientation"
+    static var description = IntentDescription("Returns whether a photo is portrait or landscape.")
+
+    @Parameter(title: "Photo")
+    var photo: IntentFile
+
+    func perform() async throws -> some IntentResult & ReturnsValue<SlideshowType> {
+        guard let uiImage = UIImage(data: photo.data) else {
+            throw SendPhotoError.invalidImage
+        }
+        let orientation: SlideshowType = uiImage.size.height > uiImage.size.width ? .portrait : .landscape
+        return .result(value: orientation)
+    }
+}
+
 private func uploadSlideshow(_ photos: [IntentFile], type: SlideshowType) async throws -> Int {
     guard !photos.isEmpty else { throw SlideshowError.noPhotos }
     let imageService = ImageProcessingService()
