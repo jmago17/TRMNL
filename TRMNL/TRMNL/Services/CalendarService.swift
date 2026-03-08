@@ -97,10 +97,13 @@ actor CalendarService {
         let monthStart = startOfDay(firstOfMonth)
         let monthEnd = endOfDay(calendar.date(byAdding: .day, value: range.count - 1, to: firstOfMonth)!)
         let allEvents = fetchEvents(from: monthStart, to: monthEnd)
-        var daysWithEvents = Set<Int>()
+        var eventsByDay: [Int: [String]] = [:]
         for event in allEvents {
             let day = calendar.component(.day, from: event.startDate)
-            daysWithEvents.insert(day)
+            if eventsByDay[day] == nil { eventsByDay[day] = [] }
+            if eventsByDay[day]!.count < 2 {
+                eventsByDay[day]!.append(String(event.title.prefix(13)))
+            }
         }
 
         var weeks: [[[String: Any]]] = []
@@ -108,13 +111,13 @@ actor CalendarService {
 
         // Pad beginning
         for _ in 0..<mondayOffset {
-            currentWeek.append(["day": "", "has_events": false])
+            currentWeek.append(["day": "", "events": [String]()])
         }
 
         for day in range {
             currentWeek.append([
                 "day": "\(day)",
-                "has_events": daysWithEvents.contains(day)
+                "events": eventsByDay[day] ?? [String]()
             ])
             if currentWeek.count == 7 {
                 weeks.append(currentWeek)
@@ -125,7 +128,7 @@ actor CalendarService {
         // Pad end
         if !currentWeek.isEmpty {
             while currentWeek.count < 7 {
-                currentWeek.append(["day": "", "has_events": false])
+                currentWeek.append(["day": "", "events": [String]()])
             }
             weeks.append(currentWeek)
         }
