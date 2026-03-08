@@ -1,7 +1,4 @@
 <!-- TRMNL Private Plugin: Photo Display -->
-<!-- Strategy: Webhook | Layout: Full -->
-<!-- Webhook merge_variables: { "image_url": "https://images.marome.app/photo.bmp" } -->
+<!-- Strategy: Polling | Layout: Full -->
 
-<div style="width:800px;height:480px;overflow:hidden;background:#fff;">
-  <img src="{{ image_url }}" width="800" height="480" style="display:block;filter:grayscale(100%);" />
-</div>
+<img class="image image-dither image--contain" src="{{ image_url }}">
