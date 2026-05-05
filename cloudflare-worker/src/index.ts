@@ -43,6 +43,11 @@ export default {
       return Response.json({ image_url: imageUrl });
     }
 
+    // GET /photo — returns the latest single photo URL for TRMNL polling plugins
+    if (request.method === "GET" && url.pathname === "/photo") {
+      return Response.json({ image_url: `${BASE_URL}/photo.jpg` });
+    }
+
     // GET /{key} — serve image from R2
     if (request.method === "GET") {
       const key = url.pathname.slice(1);
