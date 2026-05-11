@@ -1,10 +1,12 @@
 import AppKit
 import Foundation
 import Photos
+import Vision
 
 enum PhotoPickMode: String {
     case latest
     case random
+    case best
 }
 
 struct SlideshowImageSelection {
@@ -13,6 +15,8 @@ struct SlideshowImageSelection {
 }
 
 final class PhotoLibraryService {
+    private let bestCandidateLimit = 100
+
     func requestAccess() async throws {
         let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
         if status == .authorized || status == .limited {
@@ -26,14 +30,7 @@ final class PhotoLibraryService {
     }
 
     func pickImage(albumName: String?, mode: PhotoPickMode) async throws -> NSImage {
-        let assets = fetchAssets(albumName: albumName)
-        let selected: PHAsset?
-        switch mode {
-        case .latest:
-            selected = assets.first
-        case .random:
-            selected = assets.randomElement()
-        }
+        let selected = await orderedAssets(fetchAssets(albumName: albumName), mode: mode).first
 
         guard let selected else {
             throw AgentError.noPhotosFound
@@ -42,7 +39,11 @@ final class PhotoLibraryService {
     }
 
     func pickImages(albumName: String?, type: SlideshowType, limit: Int, mode: PhotoPickMode = .latest) async throws -> [NSImage] {
-        let assets = orderedAssets(fetchAssets(albumName: albumName), mode: mode)
+        let matchingAssets = fetchAssets(albumName: albumName).filter { asset in
+            let isPortrait = asset.pixelHeight > asset.pixelWidth
+            return (type == .portrait && isPortrait) || (type == .landscape && !isPortrait)
+        }
+        let assets = await orderedAssets(matchingAssets, mode: mode)
         var images: [NSImage] = []
 
         for asset in assets {
@@ -50,10 +51,6 @@ final class PhotoLibraryService {
                 break
             }
 
-            let isPortrait = asset.pixelHeight > asset.pixelWidth
-            guard (type == .portrait && isPortrait) || (type == .landscape && !isPortrait) else {
-                continue
-            }
             images.append(try await image(for: asset))
         }
 
@@ -64,7 +61,7 @@ final class PhotoLibraryService {
     }
 
     func pickSlideshowImages(albumName: String?, limitPerType: Int, mode: PhotoPickMode = .random) async throws -> SlideshowImageSelection {
-        let assets = orderedAssets(fetchAssets(albumName: albumName), mode: mode)
+        let assets = await orderedAssets(fetchAssets(albumName: albumName), mode: mode)
         var landscape: [NSImage] = []
         var portrait: [NSImage] = []
 
@@ -111,12 +108,109 @@ final class PhotoLibraryService {
         return assets
     }
 
-    private func orderedAssets(_ assets: [PHAsset], mode: PhotoPickMode) -> [PHAsset] {
+    private func orderedAssets(_ assets: [PHAsset], mode: PhotoPickMode) async -> [PHAsset] {
         switch mode {
         case .latest:
             return assets
         case .random:
             return assets.shuffled()
+        case .best:
+            return await bestAssets(from: assets)
+        }
+    }
+
+    private func bestAssets(from assets: [PHAsset]) async -> [PHAsset] {
+        let candidates = Array(assets.shuffled().prefix(bestCandidateLimit))
+        guard #available(macOS 15.0, *) else {
+            return candidates
+        }
+
+        var scored: [(asset: PHAsset, score: Float)] = []
+        scored.reserveCapacity(candidates.count)
+
+        for asset in candidates {
+            guard let score = await aestheticScore(for: asset) else {
+                continue
+            }
+            scored.append((asset, score))
+        }
+
+        guard !scored.isEmpty else {
+            return candidates
+        }
+
+        return scored
+            .sorted { $0.score > $1.score }
+            .map(\.asset)
+    }
+
+    @available(macOS 15.0, *)
+    private func aestheticScore(for asset: PHAsset) async -> Float? {
+        await withCheckedContinuation { continuation in
+            let lock = NSLock()
+            var didResume = false
+            var requestID = PHInvalidImageRequestID
+
+            func resumeOnce(_ score: Float?) {
+                lock.lock()
+                guard !didResume else {
+                    lock.unlock()
+                    return
+                }
+                didResume = true
+                let id = requestID
+                lock.unlock()
+
+                if id != PHInvalidImageRequestID {
+                    PHImageManager.default().cancelImageRequest(id)
+                }
+                continuation.resume(returning: score)
+            }
+
+            let options = PHImageRequestOptions()
+            options.deliveryMode = .fastFormat
+            options.resizeMode = .fast
+            options.isNetworkAccessAllowed = false
+
+            DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
+                resumeOnce(nil)
+            }
+
+            requestID = PHImageManager.default().requestImage(
+                for: asset,
+                targetSize: CGSize(width: 512, height: 512),
+                contentMode: .aspectFit,
+                options: options
+            ) { image, info in
+                if (info?[PHImageCancelledKey] as? Bool) == true {
+                    resumeOnce(nil)
+                    return
+                }
+                if info?[PHImageErrorKey] != nil {
+                    resumeOnce(nil)
+                    return
+                }
+                guard let image else {
+                    resumeOnce(nil)
+                    return
+                }
+
+                var rect = NSRect(origin: .zero, size: image.size)
+                guard let cgImage = image.cgImage(forProposedRect: &rect, context: nil, hints: nil) else {
+                    resumeOnce(nil)
+                    return
+                }
+
+                let request = VNCalculateImageAestheticsScoresRequest()
+                let handler = VNImageRequestHandler(cgImage: cgImage)
+
+                do {
+                    try handler.perform([request])
+                    resumeOnce(request.results?.first?.overallScore)
+                } catch {
+                    resumeOnce(nil)
+                }
+            }
         }
     }
 

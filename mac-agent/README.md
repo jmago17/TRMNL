@@ -65,6 +65,7 @@ trmnl-mac-agent month-overview
 trmnl-mac-agent photo-file /path/to/image.jpg
 trmnl-mac-agent photo-library --album "Favorites" --mode latest
 trmnl-mac-agent photo-library --mode random
+trmnl-mac-agent slideshow-both --album "TRMNL" --limit 5 --mode best
 trmnl-mac-agent slideshow-library --type portrait --album "TRMNL" --limit 5
 trmnl-mac-agent slideshow-library --type landscape --album "TRMNL" --limit 5
 trmnl-mac-agent slideshow-both --album "TRMNL" --limit 5
@@ -93,6 +94,7 @@ https://your-worker.example.workers.dev/slideshow?type=portrait&count=5
 ```
 
 Use `--mode latest` if you want the newest matching photos instead of random selection.
+Use `--mode best` to score 100 random candidates with Apple's Vision aesthetics model and upload the highest-scoring matches from that sample.
 
 Date-based calendar commands accept:
 
@@ -114,17 +116,39 @@ For Photos with iCloud optimized storage, the agent allows network access so mac
 
 ## launchd
 
-Copy and edit one of the plist examples from `Examples/`, replacing the binary path with the absolute path to your release binary.
+The plists in `Examples/` are the live agents installed on Josu's Mac mini (paths hardcoded to `/Users/josu/...`). They invoke the binary through `Scripts/run-trmnl-command.sh`, which adds timestamped logging and brrr failure notifications.
 
-Install it with:
-
-```sh
-cp Examples/com.jmago17.trmnl.day-agenda.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.jmago17.trmnl.day-agenda.plist
-```
-
-Unload it with:
+Install all four:
 
 ```sh
-launchctl unload ~/Library/LaunchAgents/com.jmago17.trmnl.day-agenda.plist
+cp Examples/com.jmago17.trmnl.*.plist ~/Library/LaunchAgents/
+mkdir -p ~/Library/Application\ Support/trmnl
+cp Scripts/run-trmnl-command.sh ~/Library/Application\ Support/trmnl/
+chmod +x ~/Library/Application\ Support/trmnl/run-trmnl-command.sh
+
+for label in com.jmago17.trmnl.day-agenda \
+             com.jmago17.trmnl.week-overview \
+             com.jmago17.trmnl.month-overview \
+             com.jmago17.trmnl.slideshow-both; do
+  launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/$label.plist
+done
 ```
+
+Unload:
+
+```sh
+launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.jmago17.trmnl.day-agenda.plist
+```
+
+Brrr error notifications (optional). The wrapper reads a Keychain secret to POST a failure ping to `https://api.brrr.now/v1/send`:
+
+```sh
+security add-generic-password \
+  -a "$USER" -s "trmnl-brrr-webhook-secret" -w "<token>"
+```
+
+If the secret is missing, the wrapper logs "Brrr notification skipped" and exits normally.
+
+## Migration to another Mac
+
+See [MIGRATION.md](MIGRATION.md).

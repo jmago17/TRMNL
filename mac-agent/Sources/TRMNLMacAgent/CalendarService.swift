@@ -55,7 +55,8 @@ final class CalendarService {
     }
 
     func weekOverviewPayload(for date: Date) -> (weekTitle: String, days: [CalendarDayPayload]) {
-        let calendar = Calendar.current
+        var calendar = Calendar.current
+        calendar.firstWeekday = 2  // Monday
         let weekStart = calendar.dateInterval(of: .weekOfYear, for: date)!.start
         let endDate = calendar.date(byAdding: .day, value: 6, to: weekStart)!
 

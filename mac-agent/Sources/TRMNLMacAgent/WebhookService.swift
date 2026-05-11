@@ -27,6 +27,7 @@ actor WebhookService {
         let payload = TRMNLPluginPayload(
             mergeVariables: [
                 "title": .string(title),
+                "generated_at": .string(ISO8601DateFormatter().string(from: Date())),
                 "events": .array(events.map { event in
                     .object(event.mapValues { .string($0) })
                 })

@@ -3,17 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.jmago17.trmnl.day-agenda</string>
+	<string>com.jmago17.trmnl.slideshow-both</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/bin/bash</string>
 		<string>/Users/josu/Library/Application Support/trmnl/run-trmnl-command.sh</string>
-		<string>day-agenda</string>
+		<string>slideshow-both</string>
+		<string>--limit</string>
+		<string>5</string>
+		<string>--mode</string>
+		<string>best</string>
 	</array>
 	<key>StandardErrorPath</key>
-	<string>/tmp/trmnl-day-agenda.err</string>
+	<string>/tmp/trmnl-slideshow-both.err</string>
 	<key>StandardOutPath</key>
-	<string>/tmp/trmnl-day-agenda.log</string>
+	<string>/tmp/trmnl-slideshow-both.log</string>
 	<key>StartCalendarInterval</key>
 	<dict>
 		<key>Hour</key>

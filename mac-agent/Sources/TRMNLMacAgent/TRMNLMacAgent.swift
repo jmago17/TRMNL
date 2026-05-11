@@ -110,7 +110,7 @@ private struct Runner {
         try await calendarService.requestAccess()
         let payload = calendarService.dayAgendaPayload(for: date)
         try await WebhookService(config: config).sendDayAgenda(title: payload.title, events: payload.events)
-        print("Day agenda sent.")
+        print("Day agenda sent: \(payload.title) (\(payload.events.count) event(s)).")
     }
 
     func sendWeekOverview(for date: Date) async throws {
@@ -208,9 +208,9 @@ private struct Usage {
       trmnl-mac-agent week-overview [--date yyyy-mm-dd] [--config path]
       trmnl-mac-agent month-overview [--date yyyy-mm-dd] [--config path]
       trmnl-mac-agent photo-file /path/to/image.jpg [--filename photo.jpg] [--delivery polling|webhook] [--config path]
-      trmnl-mac-agent photo-library [--album name] [--mode latest|random] [--filename photo.jpg] [--delivery polling|webhook] [--config path]
-      trmnl-mac-agent slideshow-library --type portrait|landscape [--album name] [--limit 5] [--mode random|latest] [--config path]
-      trmnl-mac-agent slideshow-both [--album name] [--limit 5] [--mode random|latest] [--config path]
+      trmnl-mac-agent photo-library [--album name] [--mode latest|random|best] [--filename photo.jpg] [--delivery polling|webhook] [--config path]
+      trmnl-mac-agent slideshow-library --type portrait|landscape [--album name] [--limit 5] [--mode random|latest|best] [--config path]
+      trmnl-mac-agent slideshow-both [--album name] [--limit 5] [--mode random|latest|best] [--config path]
 
     Default config path:
       ~/.config/trmnl-mac-agent/config.json

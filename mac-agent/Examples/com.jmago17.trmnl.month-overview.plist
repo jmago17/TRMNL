@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.jmago17.trmnl.day-agenda</string>
+	<string>com.jmago17.trmnl.month-overview</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/bin/bash</string>
 		<string>/Users/josu/Library/Application Support/trmnl/run-trmnl-command.sh</string>
-		<string>day-agenda</string>
+		<string>month-overview</string>
 	</array>
 	<key>StandardErrorPath</key>
-	<string>/tmp/trmnl-day-agenda.err</string>
+	<string>/tmp/trmnl-month-overview.err</string>
 	<key>StandardOutPath</key>
-	<string>/tmp/trmnl-day-agenda.log</string>
+	<string>/tmp/trmnl-month-overview.log</string>
 	<key>StartCalendarInterval</key>
 	<dict>
 		<key>Hour</key>
 		<integer>2</integer>
 		<key>Minute</key>
-		<integer>0</integer>
+		<integer>10</integer>
 	</dict>
 </dict>
 </plist>
