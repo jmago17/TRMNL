@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -u
 
-AGENT="${TRMNL_AGENT:-/Users/josu/Documents/Developer/trmnl/mac-agent/.build/release/trmnl-mac-agent}"
+AGENT="${TRMNL_AGENT:-$HOME/Documents/Developer/trmnl/mac-agent/.build/release/trmnl-mac-agent}"
 BRRR_SERVICE="${BRRR_KEYCHAIN_SERVICE:-trmnl-brrr-webhook-secret}"
 BRRR_API_URL="${BRRR_API_URL:-https://api.brrr.now/v1/send}"
 
