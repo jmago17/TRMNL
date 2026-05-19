@@ -10,6 +10,7 @@ struct Config: Decodable {
     var selectedCalendarIdentifiers: [String]
     var selectedCalendarTitles: [String]
     var localeIdentifier: String
+    var shoppingListName: String
 
     static let empty = Config(
         workerURL: "",
@@ -20,7 +21,8 @@ struct Config: Decodable {
         monthOverviewPluginUUID: "",
         selectedCalendarIdentifiers: [],
         selectedCalendarTitles: [],
-        localeIdentifier: "eu_ES"
+        localeIdentifier: "eu_ES",
+        shoppingListName: ""
     )
 
     init(
@@ -32,7 +34,8 @@ struct Config: Decodable {
         monthOverviewPluginUUID: String,
         selectedCalendarIdentifiers: [String],
         selectedCalendarTitles: [String],
-        localeIdentifier: String
+        localeIdentifier: String,
+        shoppingListName: String
     ) {
         self.workerURL = workerURL
         self.authSecret = authSecret
@@ -43,6 +46,7 @@ struct Config: Decodable {
         self.selectedCalendarIdentifiers = selectedCalendarIdentifiers
         self.selectedCalendarTitles = selectedCalendarTitles
         self.localeIdentifier = localeIdentifier
+        self.shoppingListName = shoppingListName
     }
 
     init(from decoder: Decoder) throws {
@@ -56,6 +60,7 @@ struct Config: Decodable {
         self.selectedCalendarIdentifiers = try container.decodeIfPresent([String].self, forKey: .selectedCalendarIdentifiers) ?? []
         self.selectedCalendarTitles = try container.decodeIfPresent([String].self, forKey: .selectedCalendarTitles) ?? []
         self.localeIdentifier = try container.decodeIfPresent(String.self, forKey: .localeIdentifier) ?? "eu_ES"
+        self.shoppingListName = try container.decodeIfPresent(String.self, forKey: .shoppingListName) ?? "Lista de la compra"
     }
 
     static func load(from path: String?) throws -> Config {
@@ -85,6 +90,7 @@ struct Config: Decodable {
         case selectedCalendarIdentifiers
         case selectedCalendarTitles
         case localeIdentifier
+        case shoppingListName
     }
 
     private mutating func applyEnvironmentOverrides() {
@@ -112,7 +118,8 @@ struct Config: Decodable {
       "monthOverviewPluginUUID": "trmnl-month-overview-plugin-uuid",
       "selectedCalendarIdentifiers": [],
       "selectedCalendarTitles": [],
-      "localeIdentifier": "eu_ES"
+      "localeIdentifier": "eu_ES",
+      "shoppingListName": "Lista de la compra"
     }
     """
 }
@@ -130,6 +137,7 @@ enum AgentError: LocalizedError {
     case noNetwork
     case photoAccessDenied
     case calendarAccessDenied
+    case remindersAccessDenied
 
     var errorDescription: String? {
         switch self {
@@ -155,6 +163,8 @@ enum AgentError: LocalizedError {
             return "Photos access was denied. Grant access in System Settings > Privacy & Security > Photos."
         case .calendarAccessDenied:
             return "Calendar access was denied. Grant access in System Settings > Privacy & Security > Calendars."
+        case .remindersAccessDenied:
+            return "Reminders access was denied. Grant access in System Settings > Privacy & Security > Reminders."
         }
     }
 }

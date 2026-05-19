@@ -109,8 +109,25 @@ private struct Runner {
         let calendarService = CalendarService(config: config)
         try await calendarService.requestAccess()
         let payload = calendarService.dayAgendaPayload(for: date)
-        try await WebhookService(config: config).sendDayAgenda(title: payload.title, events: payload.events)
-        print("Day agenda sent: \(payload.title) (\(payload.events.count) event(s)).")
+
+        var shopping: [String] = []
+        if !config.shoppingListName.isEmpty {
+            do {
+                let remindersService = RemindersService(config: config)
+                try await remindersService.requestAccess()
+                shopping = await remindersService.incompleteItems(in: config.shoppingListName)
+                shopping = Array(shopping.prefix(30))
+            } catch {
+                Log.info("Shopping list skipped: \(error.localizedDescription)")
+            }
+        }
+
+        try await WebhookService(config: config).sendDayAgenda(
+            title: payload.title,
+            events: payload.events,
+            shopping: shopping
+        )
+        print("Day agenda sent: \(payload.title) (\(payload.events.count) event(s), \(shopping.count) shopping item(s)).")
     }
 
     func sendWeekOverview(for date: Date) async throws {

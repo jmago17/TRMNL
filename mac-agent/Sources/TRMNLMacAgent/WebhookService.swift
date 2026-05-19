@@ -19,7 +19,7 @@ actor WebhookService {
         try await post(pluginUUID: config.photoPluginUUID, payload: payload)
     }
 
-    func sendDayAgenda(title: String, events: [[String: String]]) async throws {
+    func sendDayAgenda(title: String, events: [[String: String]], shopping: [String]) async throws {
         guard !config.dayAgendaPluginUUID.isEmpty else {
             throw AgentError.notConfigured("dayAgendaPluginUUID")
         }
@@ -30,7 +30,8 @@ actor WebhookService {
                 "generated_at": .string(ISO8601DateFormatter().string(from: Date())),
                 "events": .array(events.map { event in
                     .object(event.mapValues { .string($0) })
-                })
+                }),
+                "shopping": .array(shopping.map { .string($0) })
             ]
         )
         try await post(pluginUUID: config.dayAgendaPluginUUID, payload: payload)

@@ -24,5 +24,9 @@
   <string>TRMNL Mac Agent reads your local iCloud calendars to send agenda views to your TRMNL display.</string>
   <key>NSPhotoLibraryUsageDescription</key>
   <string>TRMNL Mac Agent reads selected photos from your local iCloud Photos library to send them to your TRMNL display.</string>
+  <key>NSRemindersUsageDescription</key>
+  <string>TRMNL Mac Agent reads incomplete items from a shopping reminders list to show on your TRMNL display.</string>
+  <key>NSRemindersFullAccessUsageDescription</key>
+  <string>TRMNL Mac Agent reads incomplete items from a shopping reminders list to show on your TRMNL display.</string>
 </dict>
 </plist>
